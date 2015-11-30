@@ -1,0 +1,28 @@
+@import "../common.less";
+
+.feed {
+  flex: 1 0 (@feed-image-width - 2*@feed-gap);
+  margin: 0 0 @feed-gap @feed-gap;
+  position: relative;
+  .shadow-low;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+    .feed-title {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
+      width: 100%;
+      height: 50%;
+      display: flex;
+      align-items: flex-end;
+      padding: 5px;
+      color: @white;
+      .gradient(transparent, @shadow-color-dark);
+      span {
+        .vertical-ellipsis();
+      }
+    }
+  }
+}

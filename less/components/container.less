@@ -1,0 +1,17 @@
+@import "../common.less";
+
+.container {
+  display: table;
+  width: 100%;
+  max-width: @container-width;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: @container-width) {
+  .container {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
