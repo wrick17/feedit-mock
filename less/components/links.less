@@ -1,0 +1,18 @@
+@import "../common.less";
+
+.links {
+  display: flex;
+  flex: 1 0 auto;
+  padding-right: @feed-gap;
+  justify-content: flex-end;
+  text-transform: capitalize;
+
+  li {
+    padding-left: @feed-gap;
+    cursor: pointer;
+
+    a {
+      color: (@white - @accent-color);
+    }
+  }
+}

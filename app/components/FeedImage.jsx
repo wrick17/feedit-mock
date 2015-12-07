@@ -4,7 +4,7 @@ import React from 'react';
 
 export default class FeedImage extends React.Component {
   imageUrl() {
-    if (this.props.imageUrl !== 'self' && this.props.imageUrl !== 'default') return this.props.imageUrl;
+    if (((/^(http|https):\/\//).test(this.props.imageUrl))) return this.props.imageUrl;
     return 'http://ingridwu.dmmdmcfatter.com/wp-content/uploads/2015/01/placeholder.png';
   }
   render() {

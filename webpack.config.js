@@ -12,6 +12,10 @@ process.env.BABEL_ENV = TARGET;
 
 var common = {
   entry: PATHS.app,
+  output: {
+      path: __dirname,
+      filename: "bundle.js"
+  },
   module: {
     loaders: [
       {
@@ -27,14 +31,7 @@ var common = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  },
-  plugins: [
-    // important! move HotModuleReplacementPlugin below
-    //new webpack.HotModuleReplacementPlugin(),
-    new HtmlwebpackPlugin({
-      title: 'Kanban app'
-    })
-  ]
+  }
 };
 
 if(TARGET === 'start' || !TARGET) {

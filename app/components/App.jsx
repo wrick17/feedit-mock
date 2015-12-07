@@ -4,18 +4,28 @@ import React from 'react';
 import Feeds from './Feeds.jsx';
 import Header from './Header.jsx';
 import superagent from 'superagent';
+import purl from 'purl';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.setLink = this.setLink.bind(this);
     this.state = {
-      data: []
+      data: [],
+      link: 'hot'
     };
   }
-  componentDidMount() {
+  fetchLink(link) {
+    if (link === 'hot') return 'hot';
+    return 'r/' + link;
+  }
+  fetchDataUrl(link) {
+    return 'http://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
+  }
+  fetchData(link) {
     var that = this;
     superagent
-      .get('http://reddit.com/r/gadgets.json?limit=100')
+      .get(that.fetchDataUrl(link))
       .end(function(err, res) {
         if (err) return console.log(err);
         that.setState({
@@ -23,10 +33,24 @@ export default class App extends React.Component {
         });
       });
   }
+  componentDidMount() {
+    var link = purl(window.location).pathname.slice(1);
+    this.setState({
+      link: link
+    });
+    this.fetchData(link);
+  }
+  setLink(link) {
+    this.setState({
+      link: link,
+      data: []
+    });
+    this.fetchData(link);
+  }
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header setLink={this.setLink} />
         <Feeds feeds={this.state.data} />
       </div>
     );

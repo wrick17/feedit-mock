@@ -1,19 +1,24 @@
 {
-  "name": "kanban_app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Feedit Mock",
+  "version": "2.0.0",
+  "description": "This is a Front End for Feedit, No Isomorphic Rendering",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Pratyush Poddar <wrick17@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrick17/feedit-mock"
+  },
+  "bugs": {
+    "url": "https://github.com/wrick17/feedit-mock/issues"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^5.8.34",
     "babel-loader": "^5.4.0",
     "babel-plugin-react-transform": "^1.1.1",
-    "css-loader": "^0.23.0",
-    "html-webpack-plugin": "^1.7.0",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "react-transform-hmr": "^1.0.1",
@@ -22,8 +27,10 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "purl": "^1.0.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "superagent": "^1.4.0"
-  }
+  },
+  "license": "MIT"
 }
