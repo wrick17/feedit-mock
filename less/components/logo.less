@@ -5,8 +5,18 @@
   padding: 10px @feed-gap;
   color: @white - @accent-color;
 
-  span {
-    font-size: 10px;
-    vertical-align: top;
+  a {
+    &:hover {
+      border-bottom: none;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 10px;
+      vertical-align: top;
+    }
   }
 }

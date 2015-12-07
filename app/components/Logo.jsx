@@ -6,7 +6,7 @@ export default class Logo extends React.Component {
   render() {
     return (
       <div className="logo">
-        <label>Feedit</label><span>Beta</span>
+        <a href="/hot"><label>Feedit</label><span>Beta</span></a>
       </div>
     );
   }
