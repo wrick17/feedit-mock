@@ -20,13 +20,12 @@ export default class App extends React.Component {
     return 'r/' + link;
   }
   fetchDataUrl(link) {
-    return 'https://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
+    return 'http://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
   }
   fetchData(link) {
     var that = this;
     superagent
       .get(that.fetchDataUrl(link))
-      .set('Accept', 'application/json')
       .end(function(err, res) {
         if (err) return console.log(err);
         that.setState({
