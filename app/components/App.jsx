@@ -35,7 +35,7 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     var link = purl(window.location).pathname.slice(1);
-    // if (link === '') window.location = '/hot';
+    if (link === '') window.location = '/hot';
     this.setState({
       link: link
     });
