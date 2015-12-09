@@ -26,6 +26,11 @@ var common = {
       {
         test: /\.less$/,
         loader: "style!css!less"
+      },
+      {
+        test: /\.js?$/,
+        exclude: /.spec.js/, // excluding .spec files
+        loader: "uglify"
       }
     ]
   },
