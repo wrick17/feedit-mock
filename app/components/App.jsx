@@ -20,7 +20,7 @@ export default class App extends React.Component {
     return 'r/' + link;
   }
   fetchDataUrl(link) {
-    return 'http://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
+    return 'https://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
   }
   fetchData(link) {
     var that = this;
