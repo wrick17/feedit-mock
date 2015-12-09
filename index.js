@@ -10,7 +10,7 @@ app.get('/*',function(req,res){
 
 var server = app.listen(process.env.PORT || 3000, function() {
 
-  var host = server.address().address || 'localhost';
+  var host = server.address().address;
   var port = server.address().port;
 
   console.log('server started at port ', port);
