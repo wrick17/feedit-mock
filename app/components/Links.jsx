@@ -9,12 +9,12 @@ export default class Links extends React.Component {
   render() {
     return (
       <ul className="links">
-        <li><a href="/hot" >hot</a></li>
-        <li><a href="/gadgets" >gadgets</a></li>
-        <li><a href="/sports" >sports</a></li>
-        <li><a href="/gaming" >gaming</a></li>
-        <li><a href="/pics" >pics</a></li>
-        <li><a href="/worldnews" >worldnews</a></li>
+        <li><a href="/feeds/hot" >hot</a></li>
+        <li><a href="/feeds/gadgets" >gadgets</a></li>
+        <li><a href="/feeds/sports" >sports</a></li>
+        <li><a href="/feeds/gaming" >gaming</a></li>
+        <li><a href="/feeds/pics" >pics</a></li>
+        <li><a href="/feeds/worldnews" >worldnews</a></li>
       </ul>
     );
   }

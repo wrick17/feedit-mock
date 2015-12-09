@@ -25,17 +25,20 @@ export default class App extends React.Component {
   fetchData(link) {
     var that = this;
     superagent
-      .get(that.fetchDataUrl(link))
+      .get('/getData')
+      .query({ link: that.fetchDataUrl(link) })
       .end(function(err, res) {
-        if (err) return console.log(err);
+        if (err) console.log(err);
+        console.log(JSON.parse(res.text));
         that.setState({
           data: JSON.parse(res.text).data.children
         });
       });
+
   }
   componentDidMount() {
-    var link = purl(window.location).pathname.slice(1);
-    if (link === '') window.location = '/hot';
+    var link = purl(window.location).pathname.slice(7);
+    if (link === '') window.location = '/feeds/hot';
     this.setState({
       link: link
     });
