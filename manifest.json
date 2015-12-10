@@ -8,7 +8,7 @@
   "splash_screens": [
     {
       "src": "splash/splash",
-      "sizes": "1920x1080",
+      "sizes": "1080x1920",
       "density": 3
     }
   ]
