@@ -37,8 +37,8 @@ export default class App extends React.Component {
 
   }
   componentDidMount() {
+    if (!purl(window.location).hash) window.location = '#/feeds/hot';
     var link = purl(window.location).hash.slice(7);
-    if (link === '') window.location = '#/feeds/hot';
     superagent
       .get('/getList')
       .end(function(err, res) {
