@@ -2,14 +2,5 @@
   "short_name": "Feedit",
   "name": "Feedit Beta",
   "display": "standalone",
-  "theme_color": "#42A5F5",
-  "background_color": "#42A5F5",
-  "color": "white",
-  "splash_screens": [
-    {
-      "src": "splash/splash",
-      "sizes": "1080x1920",
-      "density": 3
-    }
-  ]
+  "theme_color": "#42A5F5"
 }
