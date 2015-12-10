@@ -1,18 +1,62 @@
 @import "../common.less";
 
-.links {
+.links-container {
   display: flex;
   flex: 1 0 auto;
   padding-right: @feed-gap;
   justify-content: flex-end;
-  text-transform: capitalize;
 
-  li {
-    padding-left: @feed-gap;
-    cursor: pointer;
+  button {
+    display: none;
+  }
 
-    a {
-      color: (@white - @accent-color);
+  .links {
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+
+    li {
+      padding-left: @feed-gap;
+      cursor: pointer;
+
+      a {
+        color: (@white - @accent-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .links-container {
+    align-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      background: transparent;
+      border: none;
+    }
+
+    .links {
+      display: none;
+      width: 100%;
+      flex-wrap: wrap;
+      transision: 500ms;
+      margin-top: 0;
+      &.open {
+        display: flex;
+        transision: 500ms;
+      }
+      li {
+        margin: 5px 0;
+      }
     }
   }
 }

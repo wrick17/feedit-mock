@@ -29,7 +29,6 @@ export default class App extends React.Component {
       .query({ link: that.fetchDataUrl(link) })
       .end(function(err, res) {
         if (err) console.log(err);
-        console.log(JSON.parse(res.text));
         that.setState({
           data: JSON.parse(res.text).data.children
         });
