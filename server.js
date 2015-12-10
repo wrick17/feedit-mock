@@ -16,6 +16,15 @@ app.get('/getData', function(request, response) {
     });
 });
 
+app.get('/getList', function(request, response) {
+  superagent
+    .get('http://www.reddit.com/reddits.json?limit=50')
+    .end(function(err, res) {
+      if (err) console.log(err);
+      response.json(JSON.parse(res.text));
+    });
+});
+
 app.get('/feeds/*', function(req, res) {
  res.sendFile(__dirname + '/index.html');
 });

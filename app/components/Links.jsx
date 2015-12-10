@@ -2,18 +2,24 @@ import '../../less/components/links.less';
 
 import React from 'react';
 
+class Link extends React.Component {
+  render() {
+    var link = '/feeds' + this.props.link;
+    return (<li><a href={link} >{this.props.title}</a></li>);
+  }
+}
+
 class Links extends React.Component {
   render() {
-    var classes = 'links';
+    var classes = 'links', id = 0, linksArray = [], links = this.props.list;
+    linksArray = links.map(function(link) {
+      return <Link key={id++} title={link.title} link={link.link} />;
+    });
+
     if (this.props.open) classes += ' open';
     return (
       <ul className={classes}>
-        <li><a href="/feeds/hot" >hot</a></li>
-        <li><a href="/feeds/gadgets" >gadgets</a></li>
-        <li><a href="/feeds/sports" >sports</a></li>
-        <li><a href="/feeds/gaming" >gaming</a></li>
-        <li><a href="/feeds/pics" >pics</a></li>
-        <li><a href="/feeds/worldnews" >worldnews</a></li>
+        {linksArray}
       </ul>
     );
   }
@@ -36,7 +42,7 @@ export default class LinksContainer extends React.Component {
     return (
       <div className="links-container">
         <button onClick={this.toggleMenu} >•••</button>
-        <Links open={this.state.open} />
+        <Links open={this.state.open} list={this.props.list} />
       </div>
     );
   }

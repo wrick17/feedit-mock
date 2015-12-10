@@ -12,18 +12,32 @@ export default class App extends React.Component {
     this.setLink = this.setLink.bind(this);
     this.state = {
       data: [],
+      list: [],
       link: 'hot'
     };
   }
-  fetchLink(link) {
-    if (link === 'hot') return 'hot';
-    return 'r/' + link;
-  }
   fetchDataUrl(link) {
-    return 'http://reddit.com/' + this.fetchLink(link) + '.json?limit=100';
+    return 'http://reddit.com/' + link + '.json?limit=100';
   }
   fetchData(link) {
     var that = this;
+    superagent
+      .get('/getList')
+      .end(function(err, res) {
+        var data = [], list = [];
+        if (err) console.log(err);
+        data = JSON.parse(res.text).data.children;
+        console.log(data.length);
+        list = data.map(function(item) {
+          return {
+            title: item.data.title,
+            link: item.data.url
+          };
+        });
+        that.setState({
+          list: list
+        });
+      });
     superagent
       .get('/getData')
       .query({ link: that.fetchDataUrl(link) })
@@ -53,7 +67,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header setLink={this.setLink} />
+        <Header setLink={this.setLink} list={this.state.list} />
         <Feeds feeds={this.state.data} />
       </div>
     );

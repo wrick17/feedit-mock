@@ -11,7 +11,7 @@ export default class Header extends React.Component {
       <header className="header">
         <Container>
           <Logo />
-          <Links setLink={this.props.setLink} />
+          <Links setLink={this.props.setLink} list={this.props.list} />
         </Container>
       </header>
     );
