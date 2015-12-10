@@ -1,6 +1,6 @@
 {
   "short_name": "Feedit",
-  "name": "Feedit Beta"
+  "name": "Feedit Beta",
   "display": "standalone",
   "theme_color": "#42A5F5",
   "background_color": "#42A5F5",
