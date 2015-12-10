@@ -4,16 +4,16 @@ import React from 'react';
 
 class Link extends React.Component {
   render() {
-    var link = '/feeds' + this.props.link;
-    return (<li><a href={link} >{this.props.title}</a></li>);
+    var link = '#/feeds' + this.props.link;
+    return (<li><a onClick={this.props.onClick} href={link} >{this.props.title}</a></li>);
   }
 }
 
 class Links extends React.Component {
   render() {
-    var classes = 'links', id = 0, linksArray = [], links = this.props.list;
+    var classes = 'links', id = 0, linksArray = [], links = this.props.list, that = this;
     linksArray = links.map(function(link) {
-      return <Link key={id++} title={link.title} link={link.link} />;
+      return <Link onClick={that.props.onClick} key={id++} title={link.title} link={link.link} />;
     });
 
     if (this.props.open) classes += ' open';
@@ -29,6 +29,7 @@ export default class LinksContainer extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
     this.state = {
       open: false
     };
@@ -38,11 +39,16 @@ export default class LinksContainer extends React.Component {
       open: !this.state.open
     });
   }
+  closeMenu(e) {
+    this.setState({
+      open: false
+    });
+  }
   render() {
     return (
       <div className="links-container">
         <button onClick={this.toggleMenu} >•••</button>
-        <Links open={this.state.open} list={this.props.list} />
+        <Links open={this.state.open} list={this.props.list} onClick={this.closeMenu} />
       </div>
     );
   }

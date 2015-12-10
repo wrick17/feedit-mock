@@ -21,23 +21,10 @@ export default class App extends React.Component {
   }
   fetchData(link) {
     var that = this;
-    superagent
-      .get('/getList')
-      .end(function(err, res) {
-        var data = [], list = [];
-        if (err) console.log(err);
-        data = JSON.parse(res.text).data.children;
-        console.log(data.length);
-        list = data.map(function(item) {
-          return {
-            title: item.data.title,
-            link: item.data.url
-          };
-        });
-        that.setState({
-          list: list
-        });
-      });
+    that.setState({
+      link: link,
+      data: []
+    });
     superagent
       .get('/getData')
       .query({ link: that.fetchDataUrl(link) })
@@ -50,18 +37,35 @@ export default class App extends React.Component {
 
   }
   componentDidMount() {
-    var link = purl(window.location).pathname.slice(7);
-    if (link === '') window.location = '/feeds/hot';
+    var link = purl(window.location).hash.slice(7);
+    if (link === '') window.location = '#/feeds/hot';
+    superagent
+      .get('/getList')
+      .end(function(err, res) {
+        var data = [], list = [];
+        if (err) console.log(err);
+        data = JSON.parse(res.text).data.children;
+        list = data.map(function(item) {
+          return {
+            title: item.data.title,
+            link: item.data.url
+          };
+        });
+        that.setState({
+          list: list
+        });
+      });
     this.setState({
       link: link
+    });
+    var that = this;
+    window.addEventListener('hashchange', function(e) {
+      link = purl(window.location).hash.slice(7);
+      that.fetchData(link);
     });
     this.fetchData(link);
   }
   setLink(link) {
-    this.setState({
-      link: link,
-      data: []
-    });
     this.fetchData(link);
   }
   render() {
