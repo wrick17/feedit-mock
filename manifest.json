@@ -4,5 +4,12 @@
   "display": "standalone",
   "theme_color": "#42A5F5",
   "background_color": "#42A5F5",
-  "color": "white"
+  "color": "white",
+  "splash_screens": [
+    {
+      "src": "splash/splash",
+      "sizes": "1920x1080",
+      "density": 3
+    }
+  ]
 }
