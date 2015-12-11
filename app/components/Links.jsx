@@ -47,7 +47,7 @@ export default class LinksContainer extends React.Component {
   render() {
     return (
       <div className="links-container">
-        <button onClick={this.toggleMenu} >•••</button>
+        <button onClick={this.toggleMenu} className="app-button" >•••</button>
         <Links open={this.state.open} list={this.props.list} onClick={this.closeMenu} />
       </div>
     );

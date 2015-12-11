@@ -10,6 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.setLink = this.setLink.bind(this);
+    this.refresh = this.refresh.bind(this);
     this.state = {
       data: [],
       list: [],
@@ -68,10 +69,13 @@ export default class App extends React.Component {
   setLink(link) {
     this.fetchData(link);
   }
+  refresh() {
+    this.fetchData(this.state.link);
+  }
   render() {
     return (
       <div className="app">
-        <Header setLink={this.setLink} list={this.state.list} />
+        <Header setLink={this.setLink} list={this.state.list} refresh={this.refresh} />
         <Feeds feeds={this.state.data} />
       </div>
     );

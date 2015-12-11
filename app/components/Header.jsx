@@ -11,6 +11,7 @@ export default class Header extends React.Component {
       <header className="header">
         <Container>
           <Logo />
+          <button className="app-button refresh" onClick={this.props.refresh} >&#8635;</button>
           <Links setLink={this.props.setLink} list={this.props.list} />
         </Container>
       </header>
