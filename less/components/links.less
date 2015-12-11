@@ -3,7 +3,6 @@
 .links-container {
   display: flex;
   flex: 1 1 auto;
-  padding-right: @feed-gap;
   justify-content: flex-end;
   align-items: flex-end;
   flex-direction: column;
@@ -25,9 +24,11 @@
     flex-direction: row;
     text-transform: capitalize;
     overflow: auto;
-    max-height: 80vh;
+    max-height: calc(~"100vh - 58px");
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0;
+    padding-bottom: 10px;
     &.open {
       display: flex;
       transision: 500ms;

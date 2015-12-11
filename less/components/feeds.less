@@ -1,13 +1,17 @@
 @import "../common.less";
 
-.container.feeds-container {
-  margin-top: 60px;
+.feeds-container {
+  margin-top: 58px;
+  height: calc(~"100vh - 58px");
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .feeds {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    padding-right: 10px;
+    padding: @feed-gap @feed-gap 0 0;
   }
 }

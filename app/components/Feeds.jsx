@@ -3,6 +3,7 @@ import '../../less/components/feeds.less';
 import React from 'react';
 import Container from './Container';
 import Feed from './Feed';
+import Loader from './Loader';
 
 export default class Feeds extends React.Component {
   render() {
@@ -10,13 +11,15 @@ export default class Feeds extends React.Component {
     for (feed in feedsData) {
       feeds.push(<Feed key={feedsData[feed].data.id} image={feedsData[feed].data.thumbnail} title={feedsData[feed].data.title} link={feedsData[feed].data.url} />)
     }
-    if (feeds.length === 0) feeds = [<div key='id' className="loader">Loading...</div>];
+    if (feeds.length === 0) feeds = [<Loader />];
     return (
-      <Container className="feeds-container">
-        <ul className="feeds">
-          {feeds}
-        </ul>
-      </Container>
+      <div className="feeds-container">
+        <Container>
+          <ul className="feeds">
+            {feeds}
+          </ul>
+        </Container>
+      </div>
     );
   }
 }
